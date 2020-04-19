@@ -1,0 +1,82 @@
+main {
+    margin: 40px 0px;
+    .timeContainer {
+        display: block;
+        text-align: center;
+        padding: 10px;
+
+        h2 {
+            font-weight: 500;
+        }
+
+        #time {
+            color: $primary;
+            font-weight: 400;
+            font-size: 2.8em;
+        }
+
+        #date {
+            color: $secondary;
+            font-size: 1.4em;
+        }
+    }
+}
+
+.form {
+    @include respond-to('phablet') {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+.space {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.input {
+    background: none;
+    border: none;
+    width: 50px;
+    padding: 5px 10px;
+    font-family: inherit;
+    text-align: center;
+    color: $fullWhite;
+    border-bottom: 2px solid $mediumWhite;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+        text-align: center;
+        color: $mediumWhite;
+    }
+
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid $primary;
+        transition: all 0.2s ease;
+    }
+}
+
+.button {
+    display: block;
+    background: none;
+    border: none;
+    background-color: $fullWhite;
+    color: $dark;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 7px 15px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    margin: 0 auto;
+
+    &focus {
+        outline: none;
+    }
+
+    &:hover {
+        background-color: $mediumWhite;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+}

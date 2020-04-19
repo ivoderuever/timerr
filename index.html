@@ -29,12 +29,27 @@
     <title>Timerr</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload="currentTime();">
     <header>
         <h1>Timerr</h1> 
     </header>
     <main>
-        
+        <div class="timeContainer">
+            <h2 id="time"></h2>
+            <h2 id="date"></h2>
+        </div>
+        <form class="form" id="addTimeForm" action="">
+            <div class="space">
+                Add
+                <input class="input" id="hours" type="text" placeholder="Hours">
+                and
+                <input class="input" id="minutes" type="text" placeholder="Minutes">
+                to the current time.
+            </div>
+            <input class="button" type="submit" id="submitTime" value="Add time">
+        </form>
+        <button class="button" style="display: none;" id="reset">Reset</button>
     </main>
+    <script src="js/script.js"></script>
 </body>
 </html>
