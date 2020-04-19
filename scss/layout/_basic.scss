@@ -1,0 +1,21 @@
+/*Basic css*/
+* {
+    white-space: -moz-pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    font-family: $font;
+    background-color: $bc;
+    font-size: 16px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
