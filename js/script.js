@@ -8,6 +8,7 @@ function currentTime() {
     // let seconds = now.getSeconds();
     let day = now.getDate();
     let month = now.getMonth();
+    let year = now.getFullYear();
 
     hour = cleanTime(hour);
     minute = cleanTime(minute);
@@ -16,7 +17,7 @@ function currentTime() {
     // document.getElementById('time').innerHTML = hour + ":" + minute + ":" + seconds;
 
     document.getElementById('time').innerHTML = hour + ":" + minute;
-    document.getElementById('date').innerHTML = getMonth(month) + " " + day;
+    document.getElementById('date').innerHTML = getMonth(month) + " " + day + " " + year;
 
     t = setTimeout(currentTime, 500);
 }
@@ -54,13 +55,14 @@ document.getElementById("addTimeForm").addEventListener('submit', function (evt)
     // let seconds = now.getSeconds();
     let day = now.getDate();
     let month = now.getMonth();
+    let year = now.getFullYear();
 
     hour = cleanTime(hour);
     minute = cleanTime(minute);
 
     // document.getElementById('time').innerHTML = hour + ":" + minute + ":" + seconds;
     document.getElementById('time').innerHTML = hour + ":" + minute;
-    document.getElementById('date').innerHTML = getMonth(month) + " " + day;
+    document.getElementById('date').innerHTML = getMonth(month) + " " + day + " " + year;
     document.getElementById('reset').style.display = "block";
     document.getElementById('addTimeForm').style.display = "none";
 })
@@ -77,7 +79,7 @@ function addToCurrentTime() {
     if (hours && minutes) {
         totalMinutes = parseInt((hours * 60)) + parseInt(minutes);
     } else {
-        if (!minutes) {
+        if (!minutes || minutes == 0) {
             totalMinutes = parseInt((hours * 60));
         } else {
             totalMinutes = parseInt(minutes);
