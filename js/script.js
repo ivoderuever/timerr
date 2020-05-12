@@ -38,7 +38,8 @@ function stop() {
 }
 
 function reset() {
-    t = setTimeout(currentTime, 500);    
+    t = setTimeout(currentTime, 500);
+    document.getElementById('days').value = "";
     document.getElementById('hours').value = "";
     document.getElementById('minutes').value = "";
     document.getElementById('reset').style.display = "none";
@@ -69,22 +70,39 @@ document.getElementById("addTimeForm").addEventListener('submit', function (evt)
 
 document.getElementById('reset').addEventListener('click', function () {
     reset();
-}) 
+})
 
 function addToCurrentTime() {
     let totalMinutes;
-    let hours = document.getElementById('hours').value;
-    let minutes = document.getElementById('minutes').value;
+    let days;
+    let hours;
+    let minutes;
 
-    if (hours && minutes) {
-        totalMinutes = parseInt((hours * 60)) + parseInt(minutes);
-    } else {
-        if (!minutes || minutes == 0) {
-            totalMinutes = parseInt((hours * 60));
+    function check(item) {
+        if (Number.isNaN(parseInt(document.getElementById(item).value))) {
+            if (item == 'days') {
+                days = 0;
+            } else if (item == 'hours') {
+                hours = 0;
+            } else if (item == 'minutes') {
+                minutes = 0;
+            }
         } else {
-            totalMinutes = parseInt(minutes);
+            if (item == 'days') {
+                days = parseInt(document.getElementById(item).value);
+            } else if (item == 'hours') {
+                hours = parseInt(document.getElementById(item).value);
+            } else if (item == 'minutes') {
+                minutes = parseInt(document.getElementById(item).value);
+            }
         }
     }
+
+    check('days');
+    check('hours');
+    check('minutes');
+
+    totalMinutes = ((days * 24) * 60) + (hours * 60) + minutes;
 
     if (!totalMinutes || totalMinutes == 0) {
         alert('Something went wrong! Refresh the page and try again. Or the fields were empty');
