@@ -1,5 +1,10 @@
 var t;
 
+const timeInput = document.getElementById('time');
+const dateInput = document.getElementById('date');
+const resetInput = document.getElementById('reset');
+const timeFormInput = document.getElementById('addTimeForm');
+
 function currentTime() {
     let now = new Date();
 
@@ -16,8 +21,8 @@ function currentTime() {
 
     // document.getElementById('time').innerHTML = hour + ":" + minute + ":" + seconds;
 
-    document.getElementById('time').innerHTML = hour + ":" + minute;
-    document.getElementById('date').innerHTML = getMonth(month) + " " + day + " " + year;
+    timeInput.innerHTML = hour + ":" + minute;
+    dateInput.innerHTML = getMonth(month) + " " + day + " " + year;
 
     t = setTimeout(currentTime, 500);
 }
@@ -42,11 +47,11 @@ function reset() {
     document.getElementById('days').value = "";
     document.getElementById('hours').value = "";
     document.getElementById('minutes').value = "";
-    document.getElementById('reset').style.display = "none";
-    document.getElementById('addTimeForm').style.display = "block";
+    resetInput.style.display = "none";
+    timeFormInput.style.display = "block";
 }
 
-document.getElementById("addTimeForm").addEventListener('submit', function (evt) {
+timeFormInput.addEventListener('submit', function (evt) {
     evt.preventDefault();
     stop();
     let now = addToCurrentTime();
@@ -62,13 +67,13 @@ document.getElementById("addTimeForm").addEventListener('submit', function (evt)
     minute = cleanTime(minute);
 
     // document.getElementById('time').innerHTML = hour + ":" + minute + ":" + seconds;
-    document.getElementById('time').innerHTML = hour + ":" + minute;
-    document.getElementById('date').innerHTML = getMonth(month) + " " + day + " " + year;
-    document.getElementById('reset').style.display = "block";
-    document.getElementById('addTimeForm').style.display = "none";
+    timeInput.innerHTML = hour + ":" + minute;
+    dateInput.innerHTML = getMonth(month) + " " + day + " " + year;
+    resetInput.style.display = "block";
+    timeFormInput.style.display = "none";
 })
 
-document.getElementById('reset').addEventListener('click', function () {
+resetInput.addEventListener('click', function () {
     reset();
 })
 
@@ -117,48 +122,7 @@ function addToCurrentTime() {
 
 
 function getMonth(m) {
-    let monthToText;
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    switch (m) {
-        case 0:
-            monthToText = "January";
-            break;
-        case 1:
-            monthToText = "February";
-            break;
-        case 2:
-            monthToText = "March";
-            break;
-        case 3:
-            monthToText = "April";
-            break;
-        case 4:
-            monthToText = "May";
-            break;
-        case 5:
-            monthToText = "June";
-            break;
-        case 6:
-            monthToText = "July";
-            break;
-        case 7:
-            monthToText = "August";
-            break;
-        case 8:
-            monthToText = "September";
-            break;
-        case 9:
-            monthToText = "October";
-            break;
-        case 10:
-            monthToText = "November";
-            break;
-        case 11:
-            monthToText = "December";
-            break;
-        default:
-            break;
-    }
-
-    return monthToText;
+    return months[m];
 }
